@@ -1,7 +1,7 @@
 CC = cc
 MLX_DIR = mlx_linux
 MLX_LIB = mlx_linux/libmlx_Linux.a
-CFLAGS = -Wall -Wextra -Werror -Imlx_liux -Imlx_linux -O3
+CFLAGS = -Wall -Wextra -Werror -g -Imlx_liux -Imlx_linux -O3
 MLXFLAGS = -Lmlx_Linux -L/usr/lib
 LIBS = mlx_linux/libmlx_Linux.a -lXext -lX11 -lm -lz
 NAME = fractol

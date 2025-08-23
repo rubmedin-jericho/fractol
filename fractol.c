@@ -42,25 +42,42 @@ int	fractol()
 	return (0);
 }
 
-int	checker_num(int	argc, char **argv)
+int	not_num(char *str, int *count_sign)
 {
-	int	i;
-	int	j;
-	int	flag;
+	int	counter;
 
-	i = 0;
-	while(argv[i])
+	counter = 0;
+	while(str[counter])
 	{
-		j = 0;
-		flag = 0;
-		while(argv[i][j])
+		if (str[counter] == '-' || str[counter] == '+')
 		{
-			
-			j++;
+			*count_sign += 1;
+			counter++;
 		}
-		i++;
+		else if (str[counter] > 47 && str[counter] < 58)
+			counter++;
+		else
+			return (1);
 	}
-	
+	return (0);
+}
+
+int	checker_num(char **argv)
+{
+	int	counter;
+	int	count_sign;
+
+	counter = 2;
+	while(argv[counter])
+	{
+		count_sign = 0;
+		if (not_num(argv[counter], &count_sign))
+			return (1);
+		else if (count_sign > 1)
+			return (1);
+		counter++;
+	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -68,12 +85,14 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		if (!ft_strcmp(argv[1], "mandelbrot") && argc == 2)
+		{}
 //			set_mandelbrot();
 		else if (!ft_strcmp(argv[1], "julia") && argc == 4)
 		{
-			if (checker_num(argc, argv))
+			if (checker_num(argv))
 			{
-
+				printf("Error");
+				return (1);
 			}
 		}
 		else
