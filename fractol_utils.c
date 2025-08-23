@@ -23,11 +23,22 @@ int ft_strcmp(const char *s1, const char *s2)
     return s1[i] - s2[i];
 }
 
-void	Error_message()
+int	Error_message(int flag)
 {
-	write(2, "\nError parameters try:\n--------------------------------------\
+	if (flag == 0)
+	{
+	write(2, "Error parameters try:\n--------------------------------------\
 ---\n|					|\n|	./fractol mandelbrot		|\n\
 |		or			|\n|	./fractol julia (num) (num)	|\n\
 |					|\n--------------\
 ---------------------------\n", 191);
+	}
+	else if (flag == 1)
+	{
+	write(2, "--------------------------------------\
+---\n|					|	\n|	Syntax parameter error		|\n\
+|					|\n--------------\
+---------------------------\n", 130);
+	}
+	return (1);
 }

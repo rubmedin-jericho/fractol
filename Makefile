@@ -6,8 +6,11 @@ MLXFLAGS = -Lmlx_Linux -L/usr/lib
 LIBS = mlx_linux/libmlx_Linux.a -lXext -lX11 -lm -lz
 NAME = fractol
 HEADER = fractol.h
-SRCS = fractol.c \
-	   fractol_utils.c
+SRCS = fractol_main.c \
+	   fractol_utils.c \
+	   fractol_mlx.c \
+	   fractol_set_julia.c \
+	   fractol_set_mandelbrot.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
