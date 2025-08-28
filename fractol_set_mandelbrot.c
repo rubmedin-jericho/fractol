@@ -34,6 +34,8 @@ static void	handelPixel(int y, int x, t_fractal *fract)
 	int	i;
 
 	i = 0;
+	int	color;
+
 	fract->z.re = 0.0;
 	fract->z.im = 0.0;
 	fract->c.re = (maping( x, -2, 2, WIDTH) * fract->zoom) + fract->x_fract;
@@ -43,7 +45,8 @@ static void	handelPixel(int y, int x, t_fractal *fract)
 		fract->z = sum_complex(square_complex(fract->z),fract->c);
 		if ((fract->z.re * fract->z.re) + (fract->z.im * fract->z.im) > fract->scape_var)
 		{
-			my_mlx_pixel_put(fract->img, x, y, WHITE);
+			color = maping(i, BLACK, WHITE, fract->iterations);
+			my_mlx_pixel_put(fract->img, x, y, color);
 			return ;
 		}
 		i++;

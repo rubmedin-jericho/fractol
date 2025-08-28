@@ -17,7 +17,7 @@ t_complex	sum_complex(t_complex real, t_complex imagine)
 	t_complex	sum_result;
 
 	sum_result.re = real.re + imagine.re;
-	sum_result.im = real.im + imagine.re;
+	sum_result.im = real.im + imagine.im;
 	return (sum_result);
 }
 
@@ -30,7 +30,8 @@ t_complex	square_complex(t_complex z)
 	return (rst_cmp);
 }
 
-double	maping(double num, double new_min, double new_max, double old_max)
+double maping(double x, double in_min, double in_max, double out_max)
 {
-	return ((new_max - new_min) * (num - 0) / (old_max - 0) + new_min);
+    return in_min + (x / out_max) * (in_max - in_min);
 }
+
