@@ -17,9 +17,7 @@ int ft_strcmp(const char *s1, const char *s2)
     int i;
     i = 0;
     while (s1[i] == s2[i] && s1[i] != '\0')
-    {
         i++;
-    }
     return s1[i] - s2[i];
 }
 
@@ -35,7 +33,7 @@ int	Error_message(int flag)
 	}
 	else if (flag == 1)
 	{
-	write(2, "--------------------------------------\
+		write(2, "--------------------------------------\
 ---\n|					|	\n|	Syntax parameter error		|\n\
 |					|\n--------------\
 ---------------------------\n", 130);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   fractol_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rubmedin <rubmedin@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 11:06:08 by rubmedin          #+#    #+#             */
-/*   Updated: 2025/08/23 15:18:07 by rubmedin         ###   ########.fr       */
+/*   Updated: 2025/08/26 21:47:20 by rubmedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 int	fractol(t_fractal *fractal)
 {
+//	int *(destWin)(int, t_fractal);
+//
+//	destWin = destroyWindow;
 	init_window(fractal);
-
-	my_mlx_pixel_put(fractal->img, (HEIGHT / 2), (WEIGHT / 2), RED);
-	mlx_put_image_to_window(fractal->mlx, fractal->mlx_win, fractal->img->img_p, 0, 0);
+	//my_mlx_pixel_put(fractal->img, HEIGHT, WIDTH, RED);
+	if(!ft_strcmp(fractal->name_fractal, "mandelbrot"))
+		render_mandelbrot(fractal);
+/*	else if (!ft_strcmp(fractal->name_fractal, "julia"))
+		render_julia(fractal);*/
+	init_events(fractal);
 	mlx_loop(fractal->mlx);
 	return (0);
 }

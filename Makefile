@@ -10,6 +10,8 @@ SRCS = fractol_main.c \
 	   fractol_utils.c \
 	   fractol_mlx.c \
 	   fractol_set_julia.c \
+	   fractol_math.c \
+	   fractol_events.c \
 	   fractol_set_mandelbrot.c
 OBJS = $(SRCS:.c=.o)
 

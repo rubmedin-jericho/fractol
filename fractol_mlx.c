@@ -14,7 +14,9 @@
 
 void	init_window(t_fractal *fract)
 {
-	(*fract).mlx_win = mlx_new_window((*fract).mlx, HEIGHT, WEIGHT, (*fract).name_fractal);
+	fract->mlx_win = mlx_new_window(fract->mlx, HEIGHT, WIDTH, fract->name_fractal);
+	if((*fract).mlx_win == NULL)
+		exit(2);
 }
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
