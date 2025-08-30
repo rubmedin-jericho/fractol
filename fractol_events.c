@@ -15,6 +15,8 @@
 int	notify_destroyWindow(t_fractal *fract)
 {
 	mlx_destroy_window(fract->mlx, fract->mlx_win);
+	free(fract->img);
+	free(fract);
 	exit(0);
 	return (0);
 }
@@ -69,16 +71,16 @@ void	handleColor(t_fractal *fract, int flag)
 int	 enableRandomColor(int keycode, t_fractal *fract)
 {
 	(void)keycode;
-	if (fract->img->random_color == 0.0)
-		fract->img->random_color = 1.0;
+	if (fract->random_color == 0.0)
+		fract->random_color = 1.0;
 	else
-		fract->img->random_color = 0.0;
+		fract->random_color = 0.0;
 	return (0);
 }
 
 int	RandomColor(t_fractal *fract)
 {
-	if(fract->img->random_color == 1.0)
+	if(fract->random_color == 1.0)
 	{
 		clearWindow(fract);
 		fract->change_color += 1;

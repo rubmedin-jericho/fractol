@@ -54,7 +54,6 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	double	random_color;
 }			t_img;
 
 
@@ -67,7 +66,8 @@ typedef struct s_fractal
 	double		zoom;
 	int			iterations;
 	int			scape_var;
-	double			change_color;
+	double		change_color;
+	double		random_color;
 
 	//CENTER_OF_FRACTAL_IN_COMPLEX_MAP
 	double		x_fract;

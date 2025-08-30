@@ -93,6 +93,7 @@ int	main(int argc, char **argv)
 	}
 	else 
 		return (Error_message(0));
-	fractol(&fractal);
+	if (!fractol(&fractal))
+		return (1);
 	return (0);
 }

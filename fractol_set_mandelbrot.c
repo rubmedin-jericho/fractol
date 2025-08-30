@@ -15,6 +15,8 @@
 void	init_fractal_mandelbrot(t_fractal *fract)
 {
 	fract->mlx = mlx_init();
+	if(!fract->mlx)
+		exit(1);
 	init_img(fract);
 	fract->name_fractal = "mandelbrot";
 	fract->x_fract = 0.0;
@@ -23,8 +25,7 @@ void	init_fractal_mandelbrot(t_fractal *fract)
 	fract->iterations = 42;
 	fract->zoom = 1.0;
 	fract->change_color = 0.0;
-	fract->img->random_color = 0.0;
-	
+	fract->random_color = 0.0;
 }
 
 static void	handelPixel(int y, int x, t_fractal *fract)
