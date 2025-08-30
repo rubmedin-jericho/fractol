@@ -21,6 +21,18 @@ void	init_img(t_fractal *fract)
 			&(*fract).img->endian);
 }
 
+void destroyWindow(t_fractal *fract)
+{
+	mlx_destroy_window(fract->mlx, fract->mlx_win);
+	exit(0);
+}
+
+void	clearWindow(t_fractal *fract)
+{
+	free(fract->img);
+	init_img(fract);
+}
+
 int	ft_strcmp(const char *s1, const char *s2)
 {
     int i;

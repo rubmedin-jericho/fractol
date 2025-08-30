@@ -31,13 +31,15 @@ static void	handelPixel(int y, int x, t_fractal *fract)
 
 	i = 0;
 	int	color;
-double x_mapped = maping(x, -2, 2, WIDTH);
-double y_mapped = maping(y, -2, 2, HEIGHT);
-
-fract->c.re = fract->x_fract + (x_mapped - fract->x_fract) / fract->zoom;
-fract->c.im = fract->y_fract + (y_mapped - fract->y_fract) / fract->zoom;
+//double x_mapped = maping(x, -2, 2, WIDTH);
+//double y_mapped = maping(y, -2, 2, HEIGHT);
+//
+//fract->c.re = fract->x_fract + (x_mapped - fract->x_fract) / fract->zoom;
+//fract->c.im = fract->y_fract + (y_mapped - fract->y_fract) / fract->zoom;
 	fract->z.re = 0.0;
 	fract->z.im = 0.0;
+	fract->c.re = (maping( x, -2, 2, WIDTH) / fract->zoom) + fract->x_fract;
+	fract->c.im = (maping( y, 2, -2, HEIGHT) / fract->zoom) + fract->y_fract;
 //	fract->c.re = (maping( x, -2, 2, WIDTH) * fract->zoom) + fract->x_fract;
 //	fract->c.im = (maping( y, 2, -2, HEIGHT) * fract->zoom) + fract->y_fract;
 	while(i < fract->iterations)

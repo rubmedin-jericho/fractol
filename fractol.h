@@ -12,8 +12,8 @@
 # include <stdio.h>
 
 //resolution
-# define HEIGHT 1000
-# define WIDTH 1000
+# define HEIGHT 1080
+# define WIDTH 1080
 //colors
 # define RED 0x00FF0000
 # define BLACK 0x000000
@@ -33,6 +33,7 @@
 # define KEY_LEFT 65361
 # define KEY_DOWN 65364
 # define KEY_RIGHT 65363
+# define KEY_R 114
 # define FLAG_POS 1
 # define FLAG_NEG -1
 # define ZOOM 1.1
@@ -92,5 +93,7 @@ void		render_mandelbrot(t_fractal *fract);
 double		maping(double num, double new_min, double new_max, double old_max);
 t_complex	sum_complex(t_complex real, t_complex imagine);
 t_complex	square_complex(t_complex z);
+void		clearWindow(t_fractal *fract);
+void		destroyWindow(t_fractal *fract);
 //int			handleZoomIn(int keycode, t_fractal *fract);
 #endif
