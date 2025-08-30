@@ -26,14 +26,15 @@ void	handleZoomIn(t_fractal *fract, int flag)
 	{
 		fract->zoom = fract->zoom / ZOOM;
 		printf("ZOOM: %f\n", fract->zoom);
-		fract->iterations -= 1.05;
+		if(fract->zoom > 1)
+			fract->iterations -= 1.00;
 		printf("ITER: %d\n", fract->iterations);
 	}
 	else if (flag < 0)
 	{
 		fract->zoom = fract->zoom * ZOOM;
 		printf("ZOOM: %f\n", fract->zoom);
-		fract->iterations += 1.05;
+		fract->iterations += 1.00;
 		printf("ITER: %d\n", fract->iterations);
 	}
 	render_mandelbrot(fract);
