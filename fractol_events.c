@@ -21,21 +21,16 @@ int	notify_destroyWindow(t_fractal *fract)
 
 void	handleZoomIn(t_fractal *fract, int flag)
 {
-	clearWindow(fract);
-	if (flag > 0)
+	clearWindow(fract); if (flag > 0)
 	{
 		fract->zoom = fract->zoom / ZOOM;
-		printf("ZOOM: %f\n", fract->zoom);
 		if(fract->zoom > 1)
 			fract->iterations -= 1.00;
-		printf("ITER: %d\n", fract->iterations);
 	}
 	else if (flag < 0)
 	{
 		fract->zoom = fract->zoom * ZOOM;
-		printf("ZOOM: %f\n", fract->zoom);
 		fract->iterations += 1.00;
-		printf("ITER: %d\n", fract->iterations);
 	}
 	render_mandelbrot(fract);
 }
@@ -61,6 +56,39 @@ void	handleReset(t_fractal *fract)
 	render_mandelbrot(fract);
 }
 
+void	handleColor(t_fractal *fract, int flag)
+{
+	clearWindow(fract);
+	if (flag > 0)
+		fract->change_color += 1;
+	else if (flag < 0)
+		fract->change_color -= 1;
+	render_mandelbrot(fract);
+}
+
+int	 enableRandomColor(int keycode, t_fractal *fract)
+{
+	(void)keycode;
+	if (fract->img->random_color == 0.0)
+		fract->img->random_color = 1.0;
+	else
+		fract->img->random_color = 0.0;
+	return (0);
+}
+
+int	RandomColor(t_fractal *fract)
+{
+	if(fract->img->random_color == 1.0)
+	{
+		clearWindow(fract);
+		fract->change_color += 1;
+		render_mandelbrot(fract);
+	}
+	if(fract->change_color == 100)
+		fract->change_color = 0;
+	return (0);
+}
+
 int	handleEvents(int keycode, t_fractal *fract)
 {
 	if (keycode == KEY_UP || keycode == KEY_RIGHT || \
@@ -75,13 +103,18 @@ int	handleEvents(int keycode, t_fractal *fract)
 	if (keycode == KEY_R && \
 		!ft_strcmp(fract->name_fractal, "mandelbrot"))
 		handleReset(fract);
-
+	if (keycode == KEY_E)
+		handleColor(fract, 1);
+	if (keycode == KEY_Q)
+		handleColor(fract, -1);
+	if (keycode == KEY_W)
+		enableRandomColor(keycode, fract);
 	return (0);
 }
 
 void	init_events(t_fractal *fract)
 {
-//	mlx_hook(fract->mlx_win, 2, 1L << 0, handleEvents, fract);
 	mlx_hook(fract->mlx_win, KeyPress, KeyPressMask, handleEvents, fract);
+	mlx_loop_hook(fract->mlx, RandomColor, fract);
 	mlx_hook(fract->mlx_win, DESTROY_NOTIFY, 0, notify_destroyWindow, fract);
 }

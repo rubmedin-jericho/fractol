@@ -37,6 +37,9 @@
 # define FLAG_POS 1
 # define FLAG_NEG -1
 # define ZOOM 1.1
+# define KEY_E 101
+# define KEY_Q 113
+# define KEY_W 119
 
 typedef struct s_complex
 {
@@ -51,6 +54,7 @@ typedef struct s_img
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	double	random_color;
 }			t_img;
 
 
@@ -63,6 +67,7 @@ typedef struct s_fractal
 	double		zoom;
 	int			iterations;
 	int			scape_var;
+	double			change_color;
 
 	//CENTER_OF_FRACTAL_IN_COMPLEX_MAP
 	double		x_fract;
@@ -95,5 +100,12 @@ t_complex	sum_complex(t_complex real, t_complex imagine);
 t_complex	square_complex(t_complex z);
 void		clearWindow(t_fractal *fract);
 void		destroyWindow(t_fractal *fract);
+int			enableRandomColor(int keycode, t_fractal *fract);
+int			handleEvents(int keycode, t_fractal *fract);
+void		handleColor(t_fractal *fract, int flag);
+void		handleReset(t_fractal *fract);
+void		handleMove(t_fractal *fract, int keycode);
+void		handleZoomIn(t_fractal *fract, int flag);
+int			notify_destroyWindow(t_fractal *fract);
 //int			handleZoomIn(int keycode, t_fractal *fract);
 #endif

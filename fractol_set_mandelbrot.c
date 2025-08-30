@@ -22,20 +22,22 @@ void	init_fractal_mandelbrot(t_fractal *fract)
 	fract->scape_var = 4;
 	fract->iterations = 42;
 	fract->zoom = 1.0;
+	fract->change_color = 0.0;
+	fract->img->random_color = 0.0;
 	
 }
 
 static void	handelPixel(int y, int x, t_fractal *fract)
 {
 	int	i;
-
-	i = 0;
 	int	color;
+
 //double x_mapped = maping(x, -2, 2, WIDTH);
 //double y_mapped = maping(y, -2, 2, HEIGHT);
 //
 //fract->c.re = fract->x_fract + (x_mapped - fract->x_fract) / fract->zoom;
 //fract->c.im = fract->y_fract + (y_mapped - fract->y_fract) / fract->zoom;
+	i = 0;
 	fract->z.re = 0.0;
 	fract->z.im = 0.0;
 	fract->c.re = (maping( x, -2, 2, WIDTH) / fract->zoom) + fract->x_fract;
@@ -47,7 +49,7 @@ static void	handelPixel(int y, int x, t_fractal *fract)
 		fract->z = sum_complex(square_complex(fract->z),fract->c);
 		if ((fract->z.re * fract->z.re) + (fract->z.im * fract->z.im) > fract->scape_var)
 		{
-			color = maping(i, BLACK, WHITE, fract->iterations);
+			color = maping(i, BLACK, RED, (42 + fract->change_color));
 			my_mlx_pixel_put(fract->img, x, y, color);
 			return ;
 		}

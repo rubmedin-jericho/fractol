@@ -14,11 +14,7 @@
 
 int	fractol(t_fractal *fractal)
 {
-//	int *(destWin)(int, t_fractal);
-//
-//	destWin = destroyWindow;
 	init_window(fractal);
-	//my_mlx_pixel_put(fractal->img, HEIGHT, WIDTH, RED);
 	if(!ft_strcmp(fractal->name_fractal, "mandelbrot"))
 		render_mandelbrot(fractal);
 /*	else if (!ft_strcmp(fractal->name_fractal, "julia"))
