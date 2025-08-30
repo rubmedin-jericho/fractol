@@ -15,11 +15,7 @@
 void	init_fractal_mandelbrot(t_fractal *fract)
 {
 	fract->mlx = mlx_init();
-	fract->img = malloc(sizeof(t_img));
-	(*fract).img->img_p = mlx_new_image(fract->mlx, (HEIGHT * 2), (WIDTH * 2));
-	(*fract).img->addr = mlx_get_data_addr((*fract).img->img_p, \
-			&(*fract).img->bits_per_pixel, &(*fract).img->line_length, \
-			&(*fract).img->endian);
+	init_img(fract);
 	fract->name_fractal = "mandelbrot";
 	fract->x_fract = 0.0;
 	fract->y_fract = 0.0;
@@ -35,11 +31,15 @@ static void	handelPixel(int y, int x, t_fractal *fract)
 
 	i = 0;
 	int	color;
+double x_mapped = maping(x, -2, 2, WIDTH);
+double y_mapped = maping(y, -2, 2, HEIGHT);
 
+fract->c.re = fract->x_fract + (x_mapped - fract->x_fract) / fract->zoom;
+fract->c.im = fract->y_fract + (y_mapped - fract->y_fract) / fract->zoom;
 	fract->z.re = 0.0;
 	fract->z.im = 0.0;
-	fract->c.re = (maping( x, -2, 2, WIDTH) * fract->zoom) + fract->x_fract;
-	fract->c.im = (maping( y, 2, -2, HEIGHT) * fract->zoom) + fract->y_fract;
+//	fract->c.re = (maping( x, -2, 2, WIDTH) * fract->zoom) + fract->x_fract;
+//	fract->c.im = (maping( y, 2, -2, HEIGHT) * fract->zoom) + fract->y_fract;
 	while(i < fract->iterations)
 	{
 		fract->z = sum_complex(square_complex(fract->z),fract->c);

@@ -27,6 +27,15 @@
 # define ON_EXPOSE  12
 # define DESTROY_NOTIFY  17
 # define KEY_ESC 65307
+# define KEY_MINUS 45
+# define KEY_PLUS 61
+# define KEY_UP 65362
+# define KEY_LEFT 65361
+# define KEY_DOWN 65364
+# define KEY_RIGHT 65363
+# define FLAG_POS 1
+# define FLAG_NEG -1
+# define ZOOM 1.1
 
 typedef struct s_complex
 {
@@ -69,6 +78,7 @@ typedef struct s_fractal
 
 
 
+void		init_img(t_fractal *fract);
 int 		ft_strcmp(const char *s1, const char *s2);
 int			Error_message(int flag);
 void		init_window(t_fractal *fract);
@@ -82,4 +92,5 @@ void		render_mandelbrot(t_fractal *fract);
 double		maping(double num, double new_min, double new_max, double old_max);
 t_complex	sum_complex(t_complex real, t_complex imagine);
 t_complex	square_complex(t_complex z);
+//int			handleZoomIn(int keycode, t_fractal *fract);
 #endif

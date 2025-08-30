@@ -1,7 +1,9 @@
-CC = cc
+#CC = cc
+CC = gcc
 MLX_DIR = mlx_linux
 MLX_LIB = mlx_linux/libmlx_Linux.a
-CFLAGS = -Wall -Wextra -Werror -g -Imlx_liux -Imlx_linux -O3
+#CFLAGS = -Wall -Wextra -Werror -g -Imlx_liux -Imlx_linux -O3
+CFLAGS = -Wall -Wextra -Werror -Ofast -march=native -funroll-loops -flto -fomit-frame-pointer
 MLXFLAGS = -Lmlx_Linux -L/usr/lib
 LIBS = mlx_linux/libmlx_Linux.a -lXext -lX11 -lm -lz
 NAME = fractol

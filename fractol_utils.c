@@ -12,7 +12,16 @@
 
 #include "fractol.h"
 
-int ft_strcmp(const char *s1, const char *s2)
+void	init_img(t_fractal *fract)
+{
+	fract->img = malloc(sizeof(t_img));
+	(*fract).img->img_p = mlx_new_image(fract->mlx, HEIGHT, WIDTH);
+	(*fract).img->addr = mlx_get_data_addr((*fract).img->img_p, \
+			&(*fract).img->bits_per_pixel, &(*fract).img->line_length, \
+			&(*fract).img->endian);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
 {
     int i;
     i = 0;
@@ -23,9 +32,10 @@ int ft_strcmp(const char *s1, const char *s2)
 
 int	Error_message(int flag)
 {
+	ssize_t ret;
 	if (flag == 0)
 	{
-	write(2, "Error parameters try:\n--------------------------------------\
+		ret = write(2, "Error parameters try:\n--------------------------------------\
 ---\n|					|\n|	./fractol mandelbrot		|\n\
 |		or			|\n|	./fractol julia (num) (num)	|\n\
 |					|\n--------------\
@@ -33,10 +43,11 @@ int	Error_message(int flag)
 	}
 	else if (flag == 1)
 	{
-		write(2, "--------------------------------------\
+		ret = write(2, "--------------------------------------\
 ---\n|					|	\n|	Syntax parameter error		|\n\
 |					|\n--------------\
 ---------------------------\n", 130);
 	}
+	(void)ret;
 	return (1);
 }
