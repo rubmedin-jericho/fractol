@@ -31,7 +31,7 @@ int	not_num(char *str, int *count_sign)
 	counter = 0;
 	while(str[counter])
 	{
-		if (str[counter] == '-' || str[counter] == '+')
+		if (str[counter] == '-' || str[counter] == '+' || str[counter] == '.')
 		{
 			*count_sign += 1;
 			counter++;
@@ -97,3 +97,14 @@ int	main(int argc, char **argv)
 		return (1);
 	return (0);
 }
+
+//int	main(int argc, char **argv)
+//{
+//	double result;
+//	char *str = argv[1];
+//
+//	(void)argc;
+//	result = ft_atof(str, 0.0, 0.0, 1);
+//	printf("result: %f\n", result);
+//	return (0);
+//}

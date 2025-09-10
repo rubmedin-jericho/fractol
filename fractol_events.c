@@ -23,7 +23,8 @@ int	notify_destroyWindow(t_fractal *fract)
 
 void	handleZoomIn(t_fractal *fract, int flag)
 {
-	clearWindow(fract); if (flag > 0)
+	clearWindow(fract);
+	if (flag > 0)
 	{
 		fract->zoom = fract->zoom / ZOOM;
 		if(fract->zoom > 1)
@@ -96,7 +97,7 @@ int	handleEvents(int keycode, t_fractal *fract)
 	if (keycode == KEY_UP || keycode == KEY_RIGHT || \
 		keycode == KEY_DOWN || keycode == KEY_LEFT)
 		handleMove(fract, keycode);
-	else if (keycode == KEY_ESC)
+	if (keycode == KEY_ESC)
 		destroyWindow(fract);
 	else if (keycode == KEY_MINUS)
 		handleZoomIn(fract, FLAG_POS);
@@ -114,9 +115,21 @@ int	handleEvents(int keycode, t_fractal *fract)
 	return (0);
 }
 
+int	handleMouseEvents(int keycode, int x, int y, t_fractal *fract)
+{
+	(void)x;
+	(void)y;
+	if (keycode == KEY_MOUSE_UP)
+		handleZoomIn(fract, FLAG_NEG);
+	if (keycode == KEY_MOUSE_DOWN)
+		handleZoomIn(fract, FLAG_POS);
+	return (0);
+}
+
 void	init_events(t_fractal *fract)
 {
 	mlx_hook(fract->mlx_win, KeyPress, KeyPressMask, handleEvents, fract);
 	mlx_loop_hook(fract->mlx, RandomColor, fract);
+	mlx_hook(fract->mlx_win, ButtonPress, ButtonPressMask, handleMouseEvents, fract);
 	mlx_hook(fract->mlx_win, DESTROY_NOTIFY, 0, notify_destroyWindow, fract);
 }

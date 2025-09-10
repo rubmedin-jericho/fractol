@@ -12,9 +12,36 @@
 
 #include "fractol.h"
 
+
+
+double	ft_atof(const char *str, double fraction, double nbr, int div)
+{
+	int	sign;
+	int	limit;
+
+	limit = 0;
+	sign = 1;
+	if(*str++ == '-')
+		sign = -1;
+	while(*str >= '0' && *str <= '9')
+		nbr = (nbr * 10) + (*str++ - '0');
+	if(*str == '.')
+	{
+		while(*++str >= '0' && *str <= '9' && limit++ < 6)
+		{
+			fraction = fraction * 10 + (*str++ - '0');
+			div *= 10;
+		}
+		nbr += fraction / div;
+	}
+	return (nbr * sign);
+}
+
 void	init_img(t_fractal *fract)
 {
 	fract->img = malloc(sizeof(t_img));
+	 if (!fract->img)
+        exit(1);
 	(*fract).img->img_p = mlx_new_image(fract->mlx, HEIGHT, WIDTH);
 	(*fract).img->addr = mlx_get_data_addr((*fract).img->img_p, \
 			&(*fract).img->bits_per_pixel, &(*fract).img->line_length, \
@@ -29,8 +56,14 @@ void destroyWindow(t_fractal *fract)
 
 void	clearWindow(t_fractal *fract)
 {
-	free(fract->img);
-	init_img(fract);
+    if (fract->img)
+    {
+        if (fract->img->img_p)
+            mlx_destroy_image(fract->mlx, fract->img->img_p);
+        free(fract->img);
+        fract->img = NULL; // ← buena práctica
+    }
+    init_img(fract);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)

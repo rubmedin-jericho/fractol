@@ -40,6 +40,8 @@
 # define KEY_E 101
 # define KEY_Q 113
 # define KEY_W 119
+# define KEY_MOUSE_UP 4
+# define KEY_MOUSE_DOWN 5
 
 typedef struct s_complex
 {
@@ -84,6 +86,7 @@ typedef struct s_fractal
 
 
 
+double		ft_atof(const char *str, double fraction, double nbr, int div);
 void		init_img(t_fractal *fract);
 int 		ft_strcmp(const char *s1, const char *s2);
 int			Error_message(int flag);
