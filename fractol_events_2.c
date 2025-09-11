@@ -6,7 +6,7 @@
 /*   By: rubmedin <rubmedin@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 13:03:47 by rubmedin          #+#    #+#             */
-/*   Updated: 2025/09/11 13:18:55 by rubmedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:31:38 by rubmedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ int	notify_destroy_window(t_fractal *fract)
 
 void	handle_reset(t_fractal *fract)
 {
-	clearWindow(fract);
+	clear_window(fract);
 	init_fractal_mandelbrot(fract);
 	render_mandelbrot(fract);
 }
 
 void	handle_color(t_fractal *fract, int flag)
 {
-	clearWindow(fract);
+	clear_window(fract);
 	if (flag > 0)
 		fract->change_color += 1;
 	else if (flag < 0)
 		fract->change_color -= 1;
-	renderFractal(fract);
+	render_fractal(fract);
 }
 
 int	enable_random_color(int keycode, t_fractal *fract)
@@ -52,9 +52,9 @@ int	random_color(t_fractal *fract)
 {
 	if (fract->random_color == 1.0)
 	{
-		clearWindow(fract);
+		clear_window(fract);
 		fract->change_color += 1;
-		renderFractal(fract);
+		render_fractal(fract);
 	}
 	if (fract->change_color == 100)
 		fract->change_color = 0;

@@ -6,7 +6,7 @@
 /*   By: rubmedin <rubmedin@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 18:52:17 by rubmedin          #+#    #+#             */
-/*   Updated: 2025/09/11 13:37:06 by rubmedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:27:49 by rubmedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	render_mandelbrot(t_fractal *fract)
 	{
 		x = -1;
 		while (++x < WIDTH)
-			handelPixelMandelbrot(y, x, fract);
+			handel_pixel_mandelbrot(y, x, fract);
 	}
 	mlx_put_image_to_window(fract->mlx, fract->mlx_win,
 		fract->img->img_p, 0, 0);

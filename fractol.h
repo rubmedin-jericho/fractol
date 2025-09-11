@@ -6,7 +6,7 @@
 /*   By: rubmedin <rubmedin@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 12:51:42 by rubmedin          #+#    #+#             */
-/*   Updated: 2025/09/11 13:41:55 by rubmedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:48:20 by rubmedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void		render_fractal(t_fractal *fract);
 double		ft_atof(const char *str, double fraction, double nbr, int div);
 void		init_img(t_fractal *fract);
 int			ft_strcmp(const char *s1, const char *s2);
-int			error_message(int flag);
+int			error_message(void);
 void		init_window(t_fractal *fract);
 void		my_mlx_pixel_put(t_img *img, int x, int y, int color);
 

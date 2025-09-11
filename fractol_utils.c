@@ -6,7 +6,7 @@
 /*   By: rubmedin <rubmedin@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 15:30:46 by rubmedin          #+#    #+#             */
-/*   Updated: 2025/09/11 13:46:33 by rubmedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:47:53 by rubmedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,10 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (s1[i] - s2[i]);
 }
 
-int	error_message(int flag)
+int	error_message(void)
 {
 	size_t	ret;
 
-	ret = 0;
-	if (flag == 0)
-	{
-		ret = write(2, "", );
-	}
-	else if (flag == 1)
-	{
-		ret = write(2, "", );
-	}
+	ret = write(2, "./fractol mandelbrot\n./fractol julia 0.279 0\n", 46);
 	return (ret);
 }
