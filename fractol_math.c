@@ -6,7 +6,7 @@
 /*   By: rubmedin <rubmedin@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 21:29:15 by rubmedin          #+#    #+#             */
-/*   Updated: 2025/08/26 21:56:07 by rubmedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:27:35 by rubmedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ t_complex	square_complex(t_complex z)
 	return (rst_cmp);
 }
 
-double maping(double x, double in_min, double in_max, double out_max)
+double	maping(double x, double in_min, double in_max, double out_max)
 {
-    return in_min + (x / out_max) * (in_max - in_min);
+	return (in_min + (x / out_max) * (in_max - in_min));
 }
-

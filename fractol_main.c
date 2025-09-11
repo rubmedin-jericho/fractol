@@ -6,7 +6,7 @@
 /*   By: rubmedin <rubmedin@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 11:06:08 by rubmedin          #+#    #+#             */
-/*   Updated: 2025/08/26 21:47:20 by rubmedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 13:25:47 by rubmedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int	fractol(t_fractal *fractal)
 {
 	init_window(fractal);
-	if(!ft_strcmp(fractal->name_fractal, "mandelbrot"))
+	if (!ft_strcmp(fractal->name_fractal, "mandelbrot"))
 		render_mandelbrot(fractal);
-/*	else if (!ft_strcmp(fractal->name_fractal, "julia"))
-		render_julia(fractal);*/
+	else if (!ft_strcmp(fractal->name_fractal, "julia"))
+		render_julia(fractal);
 	init_events(fractal);
 	mlx_loop(fractal->mlx);
 	return (0);
@@ -29,7 +29,7 @@ int	not_num(char *str, int *count_sign)
 	int	counter;
 
 	counter = 0;
-	while(str[counter])
+	while (str[counter])
 	{
 		if (str[counter] == '-' || str[counter] == '+' || str[counter] == '.')
 		{
@@ -50,7 +50,7 @@ int	checker_num(char **argv)
 	int	count_sign;
 
 	counter = 2;
-	while(argv[counter])
+	while (argv[counter])
 	{
 		count_sign = 0;
 		if (not_num(argv[counter], &count_sign))
@@ -78,20 +78,20 @@ int	check_errors(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_fractal fractal;
+	t_fractal	fractal;
 
 	if (argc > 1)
 	{
 		if (check_errors(argc, argv) > 0)
 			return (Error_message(1));
-		if(!ft_strcmp(argv[1], "mandelbrot"))
+		if (!ft_strcmp(argv[1], "mandelbrot"))
 			init_fractal_mandelbrot(&fractal);
-		else if(!ft_strcmp(argv[1], "julia"))
+		else if (!ft_strcmp(argv[1], "julia"))
 			init_fractal_julia(&fractal, argv[2], argv[3]);
 		else
 			return (Error_message(0));
 	}
-	else 
+	else
 		return (Error_message(0));
 	if (!fractol(&fractal))
 		return (1);
