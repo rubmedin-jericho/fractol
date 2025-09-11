@@ -6,7 +6,7 @@
 /*   By: rubmedin <rubmedin@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 11:06:08 by rubmedin          #+#    #+#             */
-/*   Updated: 2025/09/11 14:42:30 by rubmedin         ###   ########.fr       */
+/*   Updated: 2025/09/11 14:59:01 by rubmedin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ int	not_num(char *str, int *count_sign, int *count_dot)
 	counter = 0;
 	while (str[counter])
 	{
-		if (str[counter] == '-' || str[counter] == '+')
-		{
-			*count_sign += 1;
-			counter++;
-		}
 		if (str[counter] == '.')
 		{
 			*count_dot += 1;
+			counter++;
+		}
+		else if (str[counter] == '-' || str[counter] == '+')
+		{
+			*count_sign += 1;
 			counter++;
 		}
 		else if (str[counter] > 47 && str[counter] < 58)
@@ -104,14 +104,3 @@ int	main(int argc, char **argv)
 		return (1);
 	return (0);
 }
-
-//int	main(int argc, char **argv)
-//{
-//	double result;
-//	char *str = argv[1];
-//
-//	(void)argc;
-//	result = ft_atof(str, 0.0, 0.0, 1);
-//	printf("result: %f\n", result);
-//	return (0);
-//}

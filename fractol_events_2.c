@@ -15,8 +15,6 @@
 int	notify_destroy_window(t_fractal *fract)
 {
 	mlx_destroy_window(fract->mlx, fract->mlx_win);
-	free(fract->img);
-	free(fract);
 	exit(0);
 	return (0);
 }

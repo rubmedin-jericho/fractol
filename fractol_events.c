@@ -33,13 +33,13 @@ void	handle_move(t_fractal *fract, int keycode)
 {
 	clear_window(fract);
 	if (keycode == KEY_UP)
-		fract->y_fract -= (0.5 / fract->zoom);
-	if (keycode == KEY_LEFT)
-		fract->x_fract += (0.5 / fract->zoom);
-	if (keycode == KEY_DOWN)
 		fract->y_fract += (0.5 / fract->zoom);
-	if (keycode == KEY_RIGHT)
+	if (keycode == KEY_LEFT)
 		fract->x_fract -= (0.5 / fract->zoom);
+	if (keycode == KEY_DOWN)
+		fract->y_fract -= (0.5 / fract->zoom);
+	if (keycode == KEY_RIGHT)
+		fract->x_fract += (0.5 / fract->zoom);
 	render_fractal(fract);
 }
 

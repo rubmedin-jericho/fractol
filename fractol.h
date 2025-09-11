@@ -20,6 +20,8 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
+
+# include <stdio.h>
 /*resolution*/
 # define HEIGHT 1080
 # define WIDTH 1080
